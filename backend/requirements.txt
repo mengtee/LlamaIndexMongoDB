@@ -1,3 +1,7 @@
 llama_index.vector_stores.mongodb
 llama_index
 llama_index.embeddings.openai
+llama-index-readers-file
+llama_index.readers.database
+llama_index.readers.web
+

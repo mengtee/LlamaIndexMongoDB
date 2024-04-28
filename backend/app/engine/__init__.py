@@ -11,7 +11,8 @@ def get_chat_engine():
         raise Exception(
             "StorageContext is empty - call 'python app/engine/generate.py' to generate the storage first"
         )
-
+    print(index)
+    print("StorageContext is not empty")
     return index.as_chat_engine(
         similarity_top_k=int(top_k),
         system_prompt=system_prompt,

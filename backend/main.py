@@ -14,6 +14,7 @@ from app.settings import init_settings
 
 app = FastAPI()
 
+# Initialize the llm model to be used
 init_settings()
 
 environment = os.getenv("ENVIRONMENT", "dev")  # Default to 'development' if not set

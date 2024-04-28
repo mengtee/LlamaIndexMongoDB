@@ -10,11 +10,12 @@ logger = logging.getLogger("uvicorn")
 
 def get_index():
     logger.info("Connecting to index from MongoDB...")
+    print(os.environ["MONGODB_DATABASE"])
     store = MongoDBAtlasVectorSearch(
         db_name=os.environ["MONGODB_DATABASE"],
         collection_name=os.environ["MONGODB_VECTORS"],
         index_name=os.environ["MONGODB_VECTOR_INDEX"],
     )
-    index = VectorStoreIndex.from_vector_store(store)
+    index = VectorStoreIndex.from_vector_store(store, show_progress = True)
     logger.info("Finished connecting to index from MongoDB.")
     return index

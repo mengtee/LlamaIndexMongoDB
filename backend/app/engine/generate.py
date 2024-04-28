@@ -18,6 +18,10 @@ def generate_datasource():
     logger.info("Creating new index")
     # load the documents and create the index
     documents = get_documents()
+    print("printing documents")
+    print("Complete running get document")
+    print(documents)
+
     store = MongoDBAtlasVectorSearch(
         db_name=os.environ["MONGODB_DATABASE"],
         collection_name=os.environ["MONGODB_VECTORS"],

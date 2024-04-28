@@ -2,6 +2,7 @@ import Header from "@/app/components/header";
 import ChatSection from "./components/chat-section";
 import TeamIntroduction from "@/app/components/team-intro";
 import ProjectIntroduction from "@/app/components/proj-intro";
+import Footer from "@/app/components/footer"
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <ProjectIntroduction />
       <ChatSection />
       <TeamIntroduction />
+      <Footer/>
     </main>
   );
 }

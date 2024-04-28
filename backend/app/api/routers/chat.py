@@ -88,7 +88,8 @@ async def chat(
     chat_engine: BaseChatEngine = Depends(get_chat_engine),
 ):
     last_message_content, messages = await parse_chat_data(data)
-
+    
+    print(last_message_content)
     response = await chat_engine.astream_chat(last_message_content, messages)
 
     async def event_generator():
