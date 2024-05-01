@@ -6,6 +6,8 @@ from typing import Dict
 from app.engine.loaders.file import FileLoaderConfig, get_file_documents
 from app.engine.loaders.web import WebLoaderConfig, get_web_documents
 from app.engine.loaders.db import DBLoaderConfig, get_db_documents
+from app.engine.loaders.txt import  TxtLoaderConfig, get_txt_documents
+
 
 logger = logging.getLogger(__name__)
 
@@ -32,6 +34,8 @@ def get_documents():
                 document = get_db_documents(
                     configs=[DBLoaderConfig(**cfg) for cfg in loader_config]
                 )
+            case "txt":
+                document = get_txt_documents(TxtLoaderConfig(**loader_config))
             case _:
                 raise ValueError(f"Invalid loader type: {loader_type}")
         documents.extend(document)
