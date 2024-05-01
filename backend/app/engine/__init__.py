@@ -4,7 +4,7 @@ from app.engine.index import get_index
 
 def get_chat_engine():
     system_prompt = os.getenv("SYSTEM_PROMPT")
-    top_k = os.getenv("TOP_K", 3)
+    top_k = os.getenv("TOP_K", 5)
 
     index = get_index()
     if index is None:
