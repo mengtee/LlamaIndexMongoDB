@@ -1,54 +1,30 @@
 import React from'react';
+import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer-top">
-          <ul className="footer-links">
-            <li>
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                About Us
-              </a>
-            </li>
-            <li>
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                Contact Us
-              </a>
-            </li>
-            <li>
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                Terms of Service
-              </a>
-            </li>
-            <li>
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                Privacy Policy
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="footer-bottom">
-          <p className="copyright">
+    <footer>
+      <div>
+        <div className="text-xs">
+          <p>
             © 2024 Your Company Name. All rights reserved.
           </p>
-          <ul className="social-links">
-            <li>
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                <i className="fa-brands fa-facebook-f" />
-              </a>
-            </li>
-            <li>
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                <i className="fa-brands fa-twitter" />
-              </a>
-            </li>
-            <li>
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                <i className="fa-brands fa-instagram" />
-              </a>
-            </li>
-          </ul>
+          <div className="pt-1 fixed flex w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static">
+            <a
+              href="https://www.llamaindex.ai/"
+              className="flex items-center justify-center font-nunito text-lg font-bold gap-2"
+            >
+            <span className="text-xs">Built by LlamaIndex</span>
+            <Image
+              className="rounded-sm"
+              src="/llama.png"
+              alt="Llama Logo"
+              width={20}
+              height={20}
+              priority
+            />
+          </a>
+        </div>
         </div>
       </div>
     </footer>
