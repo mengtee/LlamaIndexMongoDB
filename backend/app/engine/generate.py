@@ -10,8 +10,8 @@ from llama_index.vector_stores.mongodb import MongoDBAtlasVectorSearch
 from app.settings import init_settings
 from app.engine.loaders import get_documents
 from llama_index.core.settings import Settings
-from llama_index.core.service_context import ServiceContext
-from llama_index.core import set_global_service_context
+from llama_index.core.node_parser import SentenceWindowNodeParser
+from llama_index.core import ServiceContext
 
 
 logging.basicConfig(level=logging.INFO)
@@ -27,9 +27,25 @@ def generate_datasource():
     logger.info("Creating new index")
     # load the documents and create the index
     documents = get_documents()
-    print("printing documents")
-    print("Complete running get document")
-    print(documents)
+
+    # Defining node parser
+    node_parser = SentenceWindowNodeParser.from_defaults(
+        window_size=3,
+        window_metadata_key="window",
+        original_text_metadata_key="original_text",
+    )
+
+    nodes = node_parser.get_nodes_from_documents(documents)
+    base_nodes = Settings.text_splitter.get_nodes_from_documents(documents)
+    print("This is the nodes")
+    print([x.text for x in nodes])
+    print(nodes[1].metadata["window"])
+
+    sentence_context = ServiceContext.from_defaults(
+        llm=Settings.llm,
+        embed_model=Settings.embed_model,
+        node_parser=node_parser,
+    )
 
     store = MongoDBAtlasVectorSearch(
         db_name=os.environ["MONGODB_DATABASE"],
@@ -40,6 +56,7 @@ def generate_datasource():
     VectorStoreIndex.from_documents(
         documents,
         storage_context=storage_context,
+        service_context=sentence_context,
         embed_model = Settings.embed_model,
         show_progress=True,  # this will show you a progress bar as the embeddings are created
     )

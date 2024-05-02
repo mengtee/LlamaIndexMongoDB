@@ -9,6 +9,9 @@ from llama_index.core.schema import NodeWithScore
 from llama_index.core.llms import ChatMessage, MessageRole
 from app.engine import get_chat_engine
 
+from llama_index.core.node_parser import SentenceWindowNodeParser
+from llama_index.core.node_parser import SentenceSplitter
+
 chat_router = r = APIRouter()
 
 
@@ -91,6 +94,13 @@ async def chat(
     
     print(last_message_content)
     response = await chat_engine.astream_chat(last_message_content, messages)
+
+    # window = response.source_nodes[0].node.metadata["window"]
+    # sentence = response.source_nodes[0].node.metadata["original_text"]
+
+    # print(f"Window: {window}")
+    # print("------------------")
+    # print(f"Original Sentence: {sentence}")
 
     async def event_generator():
         async for token in response.async_response_gen():
