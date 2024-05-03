@@ -1,6 +1,6 @@
 import os
 from app.engine.index import get_index, get_play_waiting_game_index
-from llama_index.core.postprocessor import MetadataReplacementPostProcessor, SentenceTransformerRerank
+from llama_index.core.postprocessor import MetadataReplacementPostProcessor #, SentenceTransformerRerank
 
 
 # def get_chat_engine():
@@ -52,10 +52,10 @@ def get_chat_engine():
 
     postproc = MetadataReplacementPostProcessor(target_metadata_key="window")
 
-    # Defining the rerank model for sentence window retrieval
-    rerank = SentenceTransformerRerank(
-        top_n=5, model="BAAI/bge-reranker-base"
-    )
+    # Defining the rerank model for sentence window retrieval, no rerank for server hosting
+    # rerank = SentenceTransformerRerank(
+    #     top_n=5, model="BAAI/bge-reranker-base"
+    # )
 
     return index.as_chat_engine(
         similarity_top_k=int(top_k),
@@ -63,7 +63,7 @@ def get_chat_engine():
         chat_mode="condense_plus_context",
         # Creating sentence window retrieval method
         node_postprocessors=[
-            postproc, rerank
+            postproc#, rerank
         ],
         verbose = True,
     )
