@@ -23,7 +23,7 @@ export default function TeamIntroduction() {
             </div>
             <h3 className="text-xl p-2">Tee Meng Kiat</h3>
             <p className="text-sm">Computer Science Student</p>
-            <p className="text-sm mb-4">In charge of front end, LLM tools and agent</p>
+            <p className="text-sm mb-4">In charge of Embeddings, Advanced RAG methods and Evaluation</p>
             {/* Social Icons */}
             <div className="w-24 flex justify-center gap-10">
               <a href="https://github.com/mengtee" target="_blank" rel="noopener noreferrer">
@@ -50,7 +50,7 @@ export default function TeamIntroduction() {
             </div>
             <h3 className="text-xl p-2">Than Hui Ru</h3>
             <p className="text-sm">Computer Science Student</p>
-            <p className="text-sm mb-4">In charge of Vectara RAG, vector database</p>
+            <p className="text-sm mb-4">In charge of Front End, podcast retrieval pipeline and embeddings</p>
             {/* Social Icons */}
             <div className="w-24 flex justify-center gap-10">
               <a href="https://github.com/xoxo2002" target="_blank" rel="noopener noreferrer">
