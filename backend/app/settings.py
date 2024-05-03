@@ -3,7 +3,6 @@ from typing import Dict
 from llama_index.core.settings import Settings
 from llama_index.llms.together import TogetherLLM
 from llama_index.embeddings.together import TogetherEmbedding
-from llama_index.core.node_parser import SentenceWindowNodeParser
 from llama_index.core.node_parser import SentenceSplitter
 
 def llm_config_from_env() -> Dict:

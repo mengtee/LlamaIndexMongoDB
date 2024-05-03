@@ -17,35 +17,35 @@ from llama_index.core import ServiceContext
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
-# service_context = ServiceContext.from_defaults(embed_model=Settings.embed_model)
-# set_global_service_context(service_context)
+# Building sentence window index
 
 def generate_datasource():
 
     print("This is the settings embed model")
     print(Settings.embed_model)
     logger.info("Creating new index")
+
     # load the documents and create the index
     documents = get_documents()
 
     # Defining node parser
     node_parser = SentenceWindowNodeParser.from_defaults(
-        window_size=3,
+        window_size=8,
         window_metadata_key="window",
         original_text_metadata_key="original_text",
+        
     )
+    # nodes = node_parser.get_nodes_from_documents(documents)
+    # base_nodes = Settings.text_splitter.get_nodes_from_documents(documents)
 
-    nodes = node_parser.get_nodes_from_documents(documents)
-    base_nodes = Settings.text_splitter.get_nodes_from_documents(documents)
-    print("This is the nodes")
-    print([x.text for x in nodes])
-    print(nodes[1].metadata["window"])
+    # print("This is the nodes")
+    # print([x.text for x in nodes])
+    # print(nodes[1].metadata["window"])
 
-    sentence_context = ServiceContext.from_defaults(
-        llm=Settings.llm,
-        embed_model=Settings.embed_model,
-        node_parser=node_parser,
-    )
+    Settings.node_parser = node_parser
+    
+    print("This is the settings node parser")
+    print(Settings.node_parser)
 
     store = MongoDBAtlasVectorSearch(
         db_name=os.environ["MONGODB_DATABASE"],
@@ -53,13 +53,16 @@ def generate_datasource():
         index_name=os.environ["MONGODB_VECTOR_INDEX"],
     )
     storage_context = StorageContext.from_defaults(vector_store=store)
+
     VectorStoreIndex.from_documents(
         documents,
         storage_context=storage_context,
-        service_context=sentence_context,
+        llm = Settings.llm,
+        node_parser =Settings.node_parser,
         embed_model = Settings.embed_model,
         show_progress=True,  # this will show you a progress bar as the embeddings are created
     )
+    
     logger.info(
         f"Successfully created embeddings in the MongoDB collection {os.environ['MONGODB_VECTORS']}"
     )
