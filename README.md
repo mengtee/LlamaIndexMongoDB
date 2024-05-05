@@ -15,6 +15,8 @@ To learn more about LlamaIndex, take a look at the following resources:
 - [LlamaIndexTS Documentation](https://ts.llamaindex.ai) - learn about LlamaIndex (Typescript features).
 
 You can check out [the LlamaIndexTS GitHub repository](https://github.com/run-llama/LlamaIndexTS) - your feedback and contributions are welcome!
+## Architecture
+![image](https://github.com/mengtee/LlamaIndexMongoDB/assets/84661056/2c069cdd-7e39-4480-a614-a26b43fbef80)
 
 ## Interface
 <img width="1433" alt="image" src="https://github.com/mengtee/LlamaIndexMongoDB/assets/84661056/70be4d13-0513-4048-9493-46dc0db7d377">
