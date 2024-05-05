@@ -20,3 +20,4 @@ You can check out [the LlamaIndexTS GitHub repository](https://github.com/run-ll
 <img width="1433" alt="image" src="https://github.com/mengtee/LlamaIndexMongoDB/assets/84661056/70be4d13-0513-4048-9493-46dc0db7d377">
 
 <img width="1433" alt="image" src="https://github.com/mengtee/LlamaIndexMongoDB/assets/84661056/db0edec6-320a-4761-a61e-5eb092f63ceb">
+<img width="1433" alt="image" src="https://github.com/mengtee/LlamaIndexMongoDB/assets/84661056/0294f014-75e8-430d-a95b-a6caec1b3a9a">
